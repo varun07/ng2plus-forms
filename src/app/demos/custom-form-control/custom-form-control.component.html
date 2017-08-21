@@ -1,0 +1,17 @@
+<h2>Custom Form Control</h2>
+<h3>Template Forms</h3>
+<form #form1="ngForm" novalidate>
+  <custom-input name="testComponent" [(ngModel)]="modelValue" [internalValidation]="currentInternalValidation" #model="ngModel"></custom-input>
+  <button (click)="buttonClick()">Change Validation</button>
+</form>
+<pre>{{ form1.value | json}}</pre>
+<!--<pre>{{ form1.form.errors | json}}</pre>-->
+<!-->NOT WORKING</!-->
+
+<pre>{{ model.errors | json}}</pre>
+<!--<pre>{{ model.value | json}}</pre>-->
+<h3>Reactive Forms</h3>
+<form [formGroup]="customForm" novalidate>
+  <custom-input name="testComponent" [internalValidation]="currentInternalValidation1" formControlName="myCustomInput"></custom-input>
+  <button (click)="buttonClick1()">Change Validation</button>
+</form>

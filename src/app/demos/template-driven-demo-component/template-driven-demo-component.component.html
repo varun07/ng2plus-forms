@@ -1,0 +1,39 @@
+<h2>Template Driven Form</h2>
+<form #form="ngForm" (ngSubmit)="completeForm(form)">
+  <div>
+    <div>
+      <label>Firstname:</label>
+      <input name="fname" type="text" [(ngModel)]="firstname" required />
+      <p>You entered {{firstname}}</p>
+    </div>
+    <div>
+      <label>Lastname:</label>
+      <input name="lname" type="text" [(ngModel)]="lasttname" />
+      <p>You entered {{lasttname}}</p>
+    </div>
+  </div>
+  <div>
+    <label>Street:</label>
+    <input name="street" type="text" [(ngModel)]="street" />
+    <p>You entered {{street}}</p>
+  </div>
+
+  <div>
+    <label>Zip:</label>
+    <input name="zip" type="text" [(ngModel)]="zip" />
+    <p>You entered {{zip}}</p>
+  </div>
+
+  <div>
+    <label>City:</label>
+    <input name="city" type="text" [(ngModel)]="city" />
+    <p>You entered {{city}}</p>
+  </div>
+
+  <button type="submit">Submit</button>
+
+</form>
+
+
+<pre>{{ form.value | json}}</pre>
+<pre>{{ form.errors | json}}</pre>

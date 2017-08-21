@@ -1,0 +1,43 @@
+<h2>Model Driven/Reactive Form</h2>
+<form [formGroup]="registerForm" novalidate (ngSubmit)="completeForm1(registerForm)">
+  <div formGroupName="name">
+    <div>
+      <label>Firstname:</label>
+      <input type="text" formControlName="firstname" />
+    </div>
+    <div>
+      <label>Lastname:</label>
+      <input type="text" formControlName="lastname" />
+    </div>
+  </div>
+  <div>
+    <label>Street:</label>
+    <input type="text" formControlName="street" />
+  </div>
+  <div>
+    <label for="mySelect">State</label>
+    <select id='mySelect' class="form-control" formControlName="state">
+          <option *ngFor="let state1 of states" [value]="state1">{{state1}}</option>
+        </select>
+  </div>
+
+  <div>
+    <label>Zip:</label>
+    <input type="text" formControlName="zip" />
+  </div>
+
+  <div>
+    <label>City:</label>
+    <input type="text" formControlName="city" />
+  </div>
+
+  <button type="submit">Submit</button>
+</form>
+
+<pre>
+      {{ registerForm.value | json}}
+</pre>
+
+<pre>
+      {{ registerForm.status | json}}
+</pre>
