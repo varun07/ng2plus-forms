@@ -1,5 +1,5 @@
 import { Component, forwardRef, HostBinding, ViewChild, ElementRef, OnInit, Input } from '@angular/core';
-import { FormBuilder, ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, Validator, AbstractControl, NgModel, FormControl } from '@angular/forms';
+import { FormBuilder, ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, Validator, Validators, AbstractControl, NgModel, FormControl } from '@angular/forms';
 
 @Component({
     selector: 'custom-input',
@@ -18,57 +18,70 @@ import { FormBuilder, ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, Va
         }
     ]
 })
-export class CustomInputComponent implements ControlValueAccessor, Validator, OnInit{
-    ngOnInit(){
-        this.controlValue.valueChanges.subscribe((val) => {
-            this.value = val;
-        });
+export class CustomInputComponent implements ControlValueAccessor, Validator, OnInit {
+    private _internalValidationEnabled: boolean = true;
+    private textPattern: string = '[a-zA-Z]+';
+
+    ngOnInit() {
     }
 
-
-    // @ViewChild("model") controlModel: NgModel;
-    @ViewChild('text') textbox: ElementRef;
-
     controlValue = new FormControl();
-    // @HostBinding('attr.required') get pattern() {
-    //     if(this.internalValidation){
-    //         return ''
-    //     }
-    //     return null;
-    // }
-    @Input() internalValidation = true;
+
+    @Input() set disabled(val) {
+        if (val === "" || val !== 'false' || val !== false) {
+            this.controlValue.disable();
+        }
+    }
+
+    @Input() set internalValidation(val) {
+        this._internalValidationEnabled = val;
+        
+        this.controlValue.clearValidators();
+        if (!!this._internalValidationEnabled) {
+            this.controlValue.setValidators(Validators.pattern(this.textPattern))
+        }
+        this.controlValue.updateValueAndValidity();
+        this.onChange(this.controlValue.value);
+    }
+
+    get internalValidation() {
+        return this._internalValidationEnabled;
+    }
+
+    @Input() set value(val) {
+        if (val) {
+            this.controlValue.setValue(val);
+        }
+    }
+
+    onFocus() {
+        this.onTouched();
+    }
+
+    //--------------- IMPLEMENTING CUSTOM VALIDATION ------------------------------//
+    // ----------------------------------------------------------------------------//
+
     validate(c: AbstractControl) {
-        // console.log(this.controlValue);
-        // console.log('validate called', c);
-        if(!this.internalValidation){
+        if (!this.internalValidation) {
             return null;
         }
         return this.controlValue.errors;
     }
-
-    private _value = "";
-    get value() {
-        return this._value;
-    }
-    set value(val) {
-        this._value = val;
-        this.onChange(val);
-    }
-
-    get textPattern(){
-        if(this.internalValidation) return '[a-zA-Z]+';
-        else return null;
-    }
+    //.............................................................................//
+    // ----------------------------------------------------------------------------//
 
 
-    onChange;
-    onTouched;
-    disabled: Boolean;
+    //---------------CONTROL VALUE ACCESSOR IMPLEMENTATION--------------------------//
+    // ----------------------------------------------------------------------------//
+
+    onChange = (_) => { };
+    onTouched = () => { };
+
     writeValue(val: string): void {
-        if(val){
+        if (val) {
             this.value = val;
+            this.controlValue.setValue(val);
         }
-        console.log('value changed', val);
     }
     registerOnChange(fn: any): void {
         this.onChange = fn;
@@ -76,12 +89,9 @@ export class CustomInputComponent implements ControlValueAccessor, Validator, On
     registerOnTouched(fn: any): void {
         this.onTouched = fn;
     }
-    setDisabledState(isDisabled: boolean): void {
-        this.disabled = isDisabled;
-    }
-    onFocus() {
-        this.onTouched();
-    }
+
+    // ----------------------------------------------------------------------------//
+    //-----------------------------------------------------------------------------//
 
 }
 
@@ -99,7 +109,7 @@ export class CustomInputComponent implements ControlValueAccessor, Validator, On
 //         this._value = val;
 //     }
 
-   
+
 //     onInput(event) {
 //         this.value = event.target.value;
 //     }

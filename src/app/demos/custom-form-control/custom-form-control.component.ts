@@ -8,49 +8,25 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 })
 export class CustomFormControlComponent implements OnInit {
 
-  modelValue: string;
+  modelValue: string = "varun1";
+  modelValue1 = "varun2";
 
-  constructor() {
-    this.modelValue = "varun";
-  }
+  constructor() { }
 
   ngOnInit() {
   }
 
-  currentInternalValidation = null;
-  currentInternalValidation1 = null;
-
-
+  currentInternalValidation = true;
   buttonClick() {
     this.currentInternalValidation = !this.currentInternalValidation;
   }
-
+  
+  currentInternalValidation1 = null;
   buttonClick1() {
     this.currentInternalValidation1 = !this.currentInternalValidation1;
   }
 
-  title = 'app';
-
-  states = ['Bihar', 'Jharkhand', 'UP', 'Delhi']
-
   customForm = new FormBuilder().group({
     myCustomInput: ''
   })
-
-
-
-
-  registerForm2 = new FormGroup({
-    name: new FormGroup({
-      firstname: new FormControl(),
-      lastname: new FormControl()
-    }),
-    street: new FormControl(),
-    zip: new FormControl(),
-    city: new FormControl()
-  });
-
-
-
-
 }

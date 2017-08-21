@@ -1,17 +1,60 @@
 <h2>Custom Form Control</h2>
 <h3>Template Forms</h3>
 <form #form1="ngForm" novalidate>
-  <custom-input name="testComponent" [(ngModel)]="modelValue" [internalValidation]="currentInternalValidation" #model="ngModel"></custom-input>
-  <button (click)="buttonClick()" class="btn btn-dark">Change Validation</button>
-</form>
-<pre>{{ form1.value | json}}</pre>
-<!--<pre>{{ form1.form.errors | json}}</pre>-->
-<!-->NOT WORKING</!-->
+  <div class="form-group">
+    <label class="col-sm-2 col-form-label">With ngModel:</label>
+    <custom-input name="testComponent" [ngModel]="modelValue" [internalValidation]="currentInternalValidation" #model="ngModel"></custom-input>
+  </div>
 
-<pre>{{ model.errors | json}}</pre>
-<!--<pre>{{ model.value | json}}</pre>-->
+  <br />
+  <h5>Textbox 1 errors</h5>
+  <pre>{{ model.errors | json}}</pre>
+
+  <div class="form-group">
+    <label class="col-sm-2 col-form-label">With ngModel:</label>
+    <custom-input name="testComponent-2" [ngModel]="modelValue1" [internalValidation]="currentInternalValidation" #model1="ngModel"
+      pattern="[a-zA-Z]+"></custom-input>
+  </div>
+
+  <br />
+  <h5>Textbox 2 errors</h5>
+  <pre>{{ model1.errors | json}}</pre>
+  
+  <div class="form-group">
+    <label class="col-sm-2 col-form-label">Without ngModel:</label>
+    <custom-input name="testComponent-1" value="hello1" [internalValidation]="currentInternalValidation"></custom-input>
+  </div>
+
+  <button (click)="buttonClick()" class="btn btn-dark">Change Validation</button>
+  <button type="submit" class="btn btn-dark">Submit</button>
+</form>
+<br />
+<h5>Form Values</h5>
+<pre>{{ form1.value | json}}</pre>
+
+<br />
+<h5>Form Status</h5>
+<pre>{{ form1.valid | json}}</pre>
+
+
+
+
+
 <h3>Reactive Forms</h3>
 <form [formGroup]="customForm" novalidate>
-  <custom-input name="testComponent" [internalValidation]="currentInternalValidation1" formControlName="myCustomInput"></custom-input>
+  <div class="form-group">
+    <custom-input name="testComponent1" [internalValidation]="currentInternalValidation1" formControlName="myCustomInput"></custom-input>
+  </div>
   <button (click)="buttonClick1()" class="btn btn-dark">Change Validation</button>
 </form>
+<br />
+<h5>Form Values</h5>
+<pre>{{ customForm.value | json}}</pre>
+
+<br />
+<h5>Textbox errors</h5>
+<pre>{{ customForm.get('myCustomInput').errors | json}}</pre>
+
+<br/>
+<h3>Disabled Custom Component</h3>
+<custom-input name="testComponent2" disabled value="hey"></custom-input>
