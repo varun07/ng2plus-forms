@@ -27,6 +27,7 @@ export class CustomFormControlComponent implements OnInit {
   }
 
   customForm = new FormBuilder().group({
-    myCustomInput: ''
+    myCustomInput: '',
+    myCustomInput2: ['', Validators.required]
   })
 }

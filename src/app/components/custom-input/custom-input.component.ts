@@ -19,7 +19,7 @@ import { FormBuilder, ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, Va
     ]
 })
 export class CustomInputComponent implements ControlValueAccessor, Validator, OnInit {
-    private _internalValidationEnabled: boolean = true;
+    private _internalValidationEnabled: boolean = false;
     private textPattern: string = '[a-zA-Z]+';
 
     ngOnInit() {

@@ -11,7 +11,7 @@
   <pre>{{ model.errors | json}}</pre>
 
   <div class="form-group">
-    <label class="col-sm-2 col-form-label">With ngModel:</label>
+    <label class="col-sm-2 col-form-label">With ngModel (external validator):</label>
     <custom-input name="testComponent-2" [ngModel]="modelValue1" [internalValidation]="currentInternalValidation" #model1="ngModel"
       pattern="[a-zA-Z]+"></custom-input>
   </div>
@@ -19,7 +19,7 @@
   <br />
   <h5>Textbox 2 errors</h5>
   <pre>{{ model1.errors | json}}</pre>
-  
+
   <div class="form-group">
     <label class="col-sm-2 col-form-label">Without ngModel:</label>
     <custom-input name="testComponent-1" value="hello1" [internalValidation]="currentInternalValidation"></custom-input>
@@ -37,13 +37,22 @@
 <pre>{{ form1.valid | json}}</pre>
 
 
-
-
-
 <h3>Reactive Forms</h3>
 <form [formGroup]="customForm" novalidate>
   <div class="form-group">
+    <label class="col-sm-6col-form-label">With Internal Validation initially off and without external validation</label>
     <custom-input name="testComponent1" [internalValidation]="currentInternalValidation1" formControlName="myCustomInput"></custom-input>
+    <br />
+    <h5>Textbox errors</h5>
+    <pre>{{ customForm.get('myCustomInput').errors | json}}</pre>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-6 col-form-label">ExternalValidator and internal validation turned off</label>
+    <custom-input name="testComponent1-1" formControlName="myCustomInput2"></custom-input>
+    <br />
+    <h5>Textbox errors</h5>
+    <pre>{{ customForm.get('myCustomInput2').errors | json}}</pre>
   </div>
   <button (click)="buttonClick1()" class="btn btn-dark">Change Validation</button>
 </form>
