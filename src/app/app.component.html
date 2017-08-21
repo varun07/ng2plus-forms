@@ -1,15 +1,19 @@
-<ul class="nav nav-pills">
-  <li class="nav-item">
-    <a class="nav-link" routerLink="/template-driven" routerLinkActive="active">Template Driven</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" routerLink="/model-driven" routerLinkActive="active">Reactive</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" routerLink="/custom-validator" routerLinkActive="active">Custom Form Control</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" routerLink="/custon-form-control" routerLinkActive="active">Custom Form Control</a>
-  </li>
-</ul>
-<router-outlet></router-outlet>
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/template-driven" routerLinkActive="active">Template Driven</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/model-driven" routerLinkActive="active">Reactive</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/custom-validator" routerLinkActive="active">Custom Validator</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/custon-form-control" routerLinkActive="active">Custom Form Control</a>
+      </li>
+    </ul>
+  </nav>
+  <router-outlet></router-outlet>
+</div>

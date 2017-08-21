@@ -1,4 +1,4 @@
-<input type="text" name="myName" [formControl]="controlValue" [value]="value" #text [pattern]="textPattern" (focus)="onFocus()" [disabled]="disabled" />
+<input type="text" name="myName" class="form-control col-sm-4" [formControl]="controlValue" [value]="value" #text [pattern]="textPattern" (focus)="onFocus()" [disabled]="disabled" />
 <span class="errorMsg">Varun</span>
 
 <pre>{{ controlValue.errors | json}}</pre>

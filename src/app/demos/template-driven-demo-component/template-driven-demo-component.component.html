@@ -1,36 +1,31 @@
 <h2>Template Driven Form</h2>
 <form #form="ngForm" (ngSubmit)="completeForm(form)">
   <div>
-    <div>
-      <label>Firstname:</label>
-      <input name="fname" type="text" [(ngModel)]="firstname" required />
-      <p>You entered {{firstname}}</p>
+    <div class="form-group row">
+      <label class="col-sm-1 col-form-label">Firstname:</label>
+      <input name="fname" type="text" [(ngModel)]="firstname" required class="form-control col-sm-4" />
     </div>
-    <div>
-      <label>Lastname:</label>
-      <input name="lname" type="text" [(ngModel)]="lasttname" />
-      <p>You entered {{lasttname}}</p>
+    <div class="form-group row">
+      <label class="col-sm-1 col-form-label">Lastname:</label>
+      <input name="lname" type="text" [(ngModel)]="lasttname" class="form-control col-sm-4" />
     </div>
   </div>
-  <div>
-    <label>Street:</label>
-    <input name="street" type="text" [(ngModel)]="street" />
-    <p>You entered {{street}}</p>
+  <div class="form-group row">
+    <label class="col-sm-1 col-form-label">Street:</label>
+    <input name="street" type="text" [(ngModel)]="street" class="form-control col-sm-4" />
   </div>
 
-  <div>
-    <label>Zip:</label>
-    <input name="zip" type="text" [(ngModel)]="zip" />
-    <p>You entered {{zip}}</p>
+  <div class="form-group row">
+    <label class="col-sm-1 col-form-label">Zip:</label>
+    <input name="zip" type="text" [(ngModel)]="zip" class="form-control col-sm-4" />
   </div>
 
-  <div>
-    <label>City:</label>
-    <input name="city" type="text" [(ngModel)]="city" />
-    <p>You entered {{city}}</p>
+  <div class="form-group row">
+    <label class="col-sm-1 col-form-label">City:</label>
+    <input name="city" type="text" [(ngModel)]="city" class="form-control col-sm-4" />
   </div>
 
-  <button type="submit">Submit</button>
+  <button type="submit" class="btn btn-dark">Submit</button>
 
 </form>
 

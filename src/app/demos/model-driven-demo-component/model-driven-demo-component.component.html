@@ -1,37 +1,37 @@
 <h2>Model Driven/Reactive Form</h2>
 <form [formGroup]="registerForm" novalidate (ngSubmit)="completeForm1(registerForm)">
   <div formGroupName="name">
-    <div>
-      <label>Firstname:</label>
-      <input type="text" formControlName="firstname" />
+    <div class="form-group row">
+      <label class="col-sm-1 col-form-label">Firstname:</label>
+      <input type="text" formControlName="firstname" class="form-control col-sm-4" />
     </div>
-    <div>
-      <label>Lastname:</label>
-      <input type="text" formControlName="lastname" />
+    <div class="form-group row">
+      <label class="col-sm-1 col-form-label">Lastname:</label>
+      <input type="text" formControlName="lastname" class="form-control col-sm-4" />
     </div>
   </div>
-  <div>
-    <label>Street:</label>
-    <input type="text" formControlName="street" />
+  <div class="form-group row">
+    <label class="col-sm-1 col-form-label">Street:</label>
+    <input type="text" formControlName="street" class="form-control col-sm-4" />
   </div>
-  <div>
-    <label for="mySelect">State</label>
-    <select id='mySelect' class="form-control" formControlName="state">
+  <div class="form-group row">
+    <label class="col-sm-1 col-form-label" for="mySelect">State</label>
+    <select id='mySelect' class="form-control col-sm-4" formControlName="state">
           <option *ngFor="let state1 of states" [value]="state1">{{state1}}</option>
         </select>
   </div>
 
-  <div>
-    <label>Zip:</label>
-    <input type="text" formControlName="zip" />
+  <div class="form-group row">
+    <label class="col-sm-1 col-form-label">Zip:</label>
+    <input type="text" formControlName="zip" class="form-control col-sm-4" />
   </div>
 
-  <div>
-    <label>City:</label>
-    <input type="text" formControlName="city" />
+  <div class="form-group row">
+    <label class="col-sm-1 col-form-label">City:</label>
+    <input type="text" formControlName="city"  class="form-control col-sm-4" />
   </div>
 
-  <button type="submit">Submit</button>
+  <button type="submit" class="btn btn-dark">Submit</button>
 </form>
 
 <pre>

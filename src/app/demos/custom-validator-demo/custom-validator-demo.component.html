@@ -1,12 +1,12 @@
 <h2>Custom Validator</h2>
 <h3>In template driven form</h3>
 
-<input type="text" ngModel #match="ngModel" match  />
+<input type="text" ngModel #match="ngModel" match class="form-control col-sm-4" />
 <pre>{{ match.value | json }}</pre>
 <pre>{{ match.errors | json }}</pre>
 
 <h3>In model driven/reactive form</h3>
 
-<input type="text" [formControl]="myMatch" />
+<input type="text" [formControl]="myMatch" class="form-control col-sm-4" />
 <pre>{{ myMatch.value | json }}</pre>
 <pre>{{ myMatch.errors | json }}</pre>
