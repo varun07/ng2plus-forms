@@ -3,7 +3,7 @@ import { FormBuilder, ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, Va
 
 @Component({
     selector: 'custom-input',
-    templateUrl: './forms.component.html',
+    templateUrl: './custom-input.component.html',
     styles: ['.errorMsg { margin-left: 5px; background-color:red;'],
     providers: [
         {
